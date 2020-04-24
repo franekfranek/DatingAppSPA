@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ValueComponent } from './value/value.component';
 import { NavComponent } from './nav/nav.component'; // this and declaration is auto when u create an component
+import { AuthService } from './_services/auth.service';
 
 
 @NgModule({
@@ -19,7 +20,9 @@ import { NavComponent } from './nav/nav.component'; // this and declaration is a
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
