@@ -7,6 +7,6 @@
     "\\src\\app\\value",
     "\\src\\app\\_services"
   ],
-  "SelectedNode": "\\src\\app\\_services\\auth.service.ts",
+  "SelectedNode": "\\src\\app\\nav\\nav.component.ts",
   "PreviewInSolutionExplorer": false
 }
