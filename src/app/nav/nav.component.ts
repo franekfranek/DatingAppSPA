@@ -13,6 +13,7 @@ export class NavComponent implements OnInit {
 
 
   constructor(private authService: AuthService, private alertify: AlertifyService) { }
+  //even though it is private we can still use in the html nav.com
 
   ngOnInit(): void {
   }
