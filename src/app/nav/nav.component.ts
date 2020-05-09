@@ -12,9 +12,9 @@ export class NavComponent implements OnInit {
   model: any = {};
 
 
-  constructor(private authService: AuthService, private alertify: AlertifyService) { }
-  //even though it is private we can still use in the html nav.com
-
+  constructor(public authService: AuthService, private alertify: AlertifyService) { }
+  //it has to be public becasue it all compiles to JS and in JS there is no private/public concepts 
+  // it is needed to be public in html nav.com
   ngOnInit(): void {
   }
 
