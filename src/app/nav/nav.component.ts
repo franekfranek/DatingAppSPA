@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { error } from 'protractor';
 import { AlertifyService } from '../_services/alertify.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav', //USE THIS TO DISPLAY THE CONTENT OF COMPONENT ON OUR PAGE
@@ -12,7 +13,9 @@ export class NavComponent implements OnInit {
   model: any = {};
 
 
-  constructor(public authService: AuthService, private alertify: AlertifyService) { }
+  constructor(public authService: AuthService,
+              private alertify: AlertifyService,
+              private router: Router) { }
   //it has to be public becasue it all compiles to JS and in JS there is no private/public concepts 
   // it is needed to be public in html nav.com
   ngOnInit(): void {
@@ -25,6 +28,8 @@ export class NavComponent implements OnInit {
 
     }, error => {
         this.alertify.error(error);
+    }, () => {
+        this.router.navigate(['/members']);
     });
   }
 
@@ -38,6 +43,7 @@ export class NavComponent implements OnInit {
   logout() {
     localStorage.removeItem('token');
     this.alertify.message('You logged out!');
+    this.router.navigate(['/home']);
   }
 
 }
