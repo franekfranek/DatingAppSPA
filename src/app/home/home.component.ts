@@ -31,7 +31,6 @@ export class HomeComponent implements OnInit {
   }
 
   cancelRegisterMode(registerMode: boolean) {
-    debugger;
     this.registerMode = registerMode;
   }
 }
