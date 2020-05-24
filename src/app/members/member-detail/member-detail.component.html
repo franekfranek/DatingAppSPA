@@ -1,33 +1,34 @@
 <div class="container mt-4">
+  <h2>{{user.knownAs}}'s profile</h2>
   <div class="row">
     <div class="col-sm-4">
       <div class="card">
-        <img class="card-img-top img-thumbnail" src="{{user?.photoUrl}}" alt="{{user?.knownAs}}" />
+        <img class="card-img-top img-thumbnail" src="{{user.photoUrl}}" alt="{{user.knownAs}}" />
         <div class="card-body">
 
           <div>
             <strong>Location</strong>
-            <p>{{user?.city}}, {{user?.country}}</p>
+            <p>{{user.city}}, {{user.country}}</p>
           </div>
 
           <div>
             <strong>Age: </strong>
-            <p>{{user?.age}}</p>
+            <p>{{user.age}}</p>
           </div>
 
           <div>
             <strong>Last Active: </strong>
-            <p>{{user?.lastActive}}</p>
+            <p>{{user.lastActive}}</p>
           </div>
 
           <div>
             <strong>Member since: </strong>
-            <p>{{user?.created}}</p>
+            <p>{{user.created}}</p>
           </div>
 
           <div>
             <strong>Age: </strong>
-            <p>{{user?.age}}</p>
+            <p>{{user.age}}</p>
           </div>
 
         </div>
@@ -54,7 +55,7 @@
             <p>{{user?.interests}}</p>
           </tab>
           <tab heading="Photos">
-            <p>Photos here</p>
+            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
           </tab>
           <tab heading="Messages">
             <p>Messages here</p>
