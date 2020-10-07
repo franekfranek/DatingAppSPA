@@ -21,7 +21,7 @@ export class MemberDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.subscribe(data => {
-      this.user = data['user']//this is the same as in route
+      this.user = data['user'] //this is the same as in route
     });
     this.galleryOptions = [
       {

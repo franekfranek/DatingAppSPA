@@ -18,4 +18,4 @@ export interface User {
 }
 //the optional properties(the one with ? elvis operator xD) always comes last after requiered ones
 //here there are 4 of them beacuse those are used for UserForDetailedDto
-//the obligatory ones are for UserForListDto
+//the obligatory ones are for UserForListDto, so there is one model but with optional properties
