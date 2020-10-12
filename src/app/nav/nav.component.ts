@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
   model: any = {};
-
+  photoUrl: string;
 
   constructor(public authService: AuthService,
               private alertify: AlertifyService,
@@ -19,6 +19,7 @@ export class NavComponent implements OnInit {
   //it has to be public becasue it all compiles to JS and in JS there is no private/public concepts 
   // it is needed to be public in html nav.com
   ngOnInit(): void {
+    this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
   }
 
 
@@ -42,6 +43,9 @@ export class NavComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.authService.decodedToken = null;
+    this.authService.currentUser = null;
     this.alertify.message('You logged out!');
     this.router.navigate(['/home']);
   }

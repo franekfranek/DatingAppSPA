@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { User } from '../_models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +12,16 @@ export class AuthService {
   baseUrl = 'http://localhost:5000/api/auth/';
   jwtHelper = new JwtHelperService();
   decodedToken: any;
+  currentUser: User;
+  //default user picture 
+  photoUrl = new BehaviorSubject<string>('../../assets/user.png');
+  currentPhotoUrl = this.photoUrl.asObservable();
 
   constructor(private http: HttpClient) { }
+
+  changeMemberPhoto(photoUrl: string) {
+    this.photoUrl.next(photoUrl);
+  }
 
   login(model: any) {
     return this.http.post(this.baseUrl + 'login', model)
@@ -20,8 +30,10 @@ export class AuthService {
           const user = response;
           if (user) {
             localStorage.setItem('token', user.token);
-            this.decodedToken = this.jwtHelper.decodeToken(user.token)
-            debugger;
+            localStorage.setItem('user', JSON.stringify(user.userForPhoto))
+            this.decodedToken = this.jwtHelper.decodeToken(user.token);
+            this.currentUser = user.userForPhoto;
+            this.changeMemberPhoto(this.currentUser.photoUrl);
           }
 
         })
@@ -37,5 +49,7 @@ export class AuthService {
     const token = localStorage.getItem('token');
     return !this.jwtHelper.isTokenExpired(token); //if token is not expired returns true
   }
+
+
 
 }
