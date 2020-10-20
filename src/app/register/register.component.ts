@@ -24,11 +24,14 @@ export class RegisterComponent implements OnInit {
 
 
     ngOnInit(): void {
-        //this.registerForm = new FormGroup({
-        //    username: new FormControl("", Validators.required), //state here means what is the initial state(value of input) of the form
-        //    password: new FormControl("", [Validators.required, Validators.minLength(4), Validators.maxLength(8)]),
-        //    confirmPassword: new FormControl("", Validators.required)
-        //}, this.passwordMatchValidator);
+        this.registerForm = new FormGroup({
+          username: new FormControl("", Validators.required),
+          //state(first arg) here means what is the
+          //initial state(value of input) of the form
+          password: new FormControl("", [Validators.required,
+                          Validators.minLength(4), Validators.maxLength(8)]),
+          confirmPassword: new FormControl("", Validators.required)
+        }, this.passwordMatchValidator);
       this.bsConfig = {
         containerClass: "theme-red"
       }
@@ -44,7 +47,8 @@ export class RegisterComponent implements OnInit {
       dateOfBirth: [null, Validators.required],
       city: ["", Validators.required],
       country: ["", Validators.required],
-      password: ["", [Validators.required, Validators.minLength(4), Validators.maxLength(8)]],
+      password: ["", [Validators.required, Validators.minLength(4),
+                        Validators.maxLength(8)]],
       confirmPassword: ["", Validators.required]
     }, {validator: this.passwordMatchValidator});
   }
