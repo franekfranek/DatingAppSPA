@@ -11,6 +11,7 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
 import { MemberEditResolver } from './_resolvers/member-edit-resolver';
 import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
 import { ListResolver } from './_resolvers/lists.resolver';
+import { MessagesResolver } from './_resolvers/messages-resolver';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -32,12 +33,21 @@ export const appRoutes: Routes = [
         path: 'member/edit', component: MemberEditComponent,
         resolve: {user : MemberEditResolver}, canDeactivate: [PreventUnsavedChangesGuard]
       },
-      { path: 'messages', component: MessagesComponent },
-      { path: 'lists', component: ListsComponent, resolve: { users: ListResolver } },
+      {
+        path: 'messages', component: MessagesComponent,
+        resolve: { messages: MessagesResolver }
+      },
+      {
+        path: 'lists', component: ListsComponent,
+        resolve: { users: ListResolver }
+      },
     ]
   },
 
   { path: '**', redirectTo: '', pathMatch: 'full' }
   //any that not fits above routes is mangae by 'wildcard' route
   //ORDER MATTERS HERE IF U PUT WILDCARD FIRST NO ROUTE ARE REACHABLE
+
+  // we getting data in our root and pass this data inside our root so we have access what is inside there
+  // BEFORE our component loads
 ];

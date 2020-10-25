@@ -1,3 +1,4 @@
+
 .card:hover img{
     transform: scale(1.2, 1.2);
     transition-duration: 500ms; /*//it will take 500 ms to trans form 1.0 to 1.2*/
