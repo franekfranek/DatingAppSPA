@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from '../_models/user';
+import { debug } from 'console';
 
 @Injectable({
   providedIn: 'root'
@@ -29,10 +30,11 @@ export class AuthService {
         map((response: any) => { //here response is only the token
           const user = response;
           if (user) {
+            debugger;
             localStorage.setItem('token', user.token);
-            localStorage.setItem('user', JSON.stringify(user.userForPhoto))
+            localStorage.setItem('user', JSON.stringify(user.user))
             this.decodedToken = this.jwtHelper.decodeToken(user.token);
-            this.currentUser = user.userForPhoto;
+            this.currentUser = user.user;
             this.changeMemberPhoto(this.currentUser.photoUrl);
           }
 
@@ -50,6 +52,17 @@ export class AuthService {
     return !this.jwtHelper.isTokenExpired(token); //if token is not expired returns true
   }
 
+  roleMatch(allowedRoles) : boolean {
+    let isMatch = false;
+    const userRoles = this.decodedToken.role as Array<string>;
 
+    allowedRoles.forEach(element => {
+      if (userRoles.includes(element)) {
+        isMatch = true;
+        return;
+      }
+    });
+    return isMatch;
+  }
 
 }

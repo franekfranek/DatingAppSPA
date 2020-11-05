@@ -13,3 +13,15 @@ img.img-thumbnail{
 input[type=file]{
     color: transparent; 
 }
+
+.not-approved{
+    opacity: 0.25;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: crimson;
+}
