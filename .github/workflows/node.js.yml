@@ -24,6 +24,6 @@ jobs:
 
     - name: run tests 
       run: |
-        ng test
+        npm run test
     # - run: npm run build --if-present
     # - run: npm test
