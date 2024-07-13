@@ -31,3 +31,11 @@ jobs:
       - name: Event name
         run: |
           echo "Event name: $RUNNER_OS"
+
+  echo-os-win:
+      runs-on: windows-latest
+      steps:    
+      - name: Event name
+        shell: bash
+        run: |
+          echo "Event name: $RUNNER_OS"
