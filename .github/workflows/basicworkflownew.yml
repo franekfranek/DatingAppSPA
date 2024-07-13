@@ -17,3 +17,7 @@ jobs:
           exit 0
       - name: Say goodbye
         run: echo "Goodbye! you fool"
+      
+      - name: Event name
+        run: |
+          echo "Event name: ${{ github.event_name }}"
