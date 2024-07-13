@@ -17,7 +17,17 @@ jobs:
           exit 0
       - name: Say goodbye
         run: echo "Goodbye! you fool"
-      
+
+  echo-event:
+      runs-on: ubuntu-latest
+      steps:    
       - name: Event name
         run: |
           echo "Event name: ${{ github.event_name }}"
+
+  echo-os:
+      runs-on: ubuntu-latest
+      steps:    
+      - name: Event name
+        run: |
+          echo "Event name: $RUNNER_OS"
