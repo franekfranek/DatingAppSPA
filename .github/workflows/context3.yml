@@ -4,7 +4,7 @@ run-name: 06 - Contexts | DEBUG - ${{ inputs.debug }}
 on:
   push:
     branches:
-      - devops3 
+      - develop
   workflow_dispatch:
     inputs:
       debug:
